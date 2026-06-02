@@ -49,8 +49,9 @@ export function SystemFunctions() {
                     <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><Layers className="w-5 h-5 text-amber-500"/></div>
                     <div><div className="h-2 w-16 bg-slate-200 dark:bg-white/10 rounded-full mb-2"></div><div className="h-4 w-24 bg-slate-300 dark:bg-white/20 rounded-full"></div></div>
                   </div>
-                  <div className="bg-white dark:bg-[#1C1C22] rounded-2xl p-4 shadow-sm border border-slate-200 dark:border-white/5 flex flex-col justify-center items-center opacity-50 border-dashed">
-                    <span className="text-xl">+</span>
+                  <div className="bg-white dark:bg-[#1C1C22] rounded-2xl p-4 shadow-sm border border-slate-200 dark:border-white/5 flex flex-col justify-between">
+                    <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><Layers className="w-5 h-5 text-purple-500"/></div>
+                    <div><div className="h-2 w-16 bg-slate-200 dark:bg-white/10 rounded-full mb-2"></div><div className="h-4 w-24 bg-slate-300 dark:bg-white/20 rounded-full"></div></div>
                   </div>
                 </div>
               </div>

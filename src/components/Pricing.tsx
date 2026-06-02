@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeader, FeatureList, Button } from './ui';
+import { gsap } from 'gsap';
 
 const PLANS = [
   {
@@ -41,6 +43,28 @@ const PLANS = [
 ];
 
 export function Pricing() {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animación de rotación del gradiente del borde
+      gsap.to('.popular-border-glow', {
+        backgroundPosition: '200% 200%',
+        duration: 5,
+        ease: 'none',
+        repeat: -1,
+      });
+      // Animación de brillo pulsante sutil
+      gsap.to('.popular-border-glow', {
+        opacity: 0.6,
+        duration: 2.5,
+        yoyo: true,
+        repeat: -1,
+        ease: 'sine.inOut',
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section id="pricing" className="py-32 px-6 bg-gradient-to-b from-primary/5 to-slate-100 dark:from-[#090915] dark:to-[#0c0c0f]">
       <div className="max-w-7xl mx-auto">
@@ -59,32 +83,45 @@ export function Pricing() {
               transition={{ delay: i * 0.1 }}
               className={`rounded-3xl p-8 flex flex-col relative ${
                 plan.highlight
-                  ? 'bg-gradient-to-b from-white to-slate-50 dark:from-[#1c1c24] dark:to-[#15151a] border border-primary ring-1 ring-primary/50 shadow-[0_0_30px_rgba(67,45,215,0.15)] dark:shadow-[0_0_30px_rgba(67,45,215,0.2)]'
+                  ? 'shadow-[0_0_30px_rgba(67,45,215,0.15)] dark:shadow-[0_0_30px_rgba(67,45,215,0.2)]'
                   : 'bg-white dark:bg-[#15151a] border border-slate-200 dark:border-white/10 shadow-sm'
               }`}
             >
               {plan.highlight && (
-                <div className="absolute top-0 right-8 -translate-y-1/2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                  Más Popular
-                </div>
+                <>
+                  {/* Borde con gradiente animado */}
+                  <div 
+                    className="popular-border-glow absolute inset-[-2px] rounded-[26px] bg-gradient-to-r from-primary via-accent to-primary pointer-events-none -z-10"
+                    style={{ backgroundSize: '200% 200%' }}
+                  />
+                  {/* Fondo interno de la tarjeta para tapar el centro del borde */}
+                  <div className="absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white to-slate-50 dark:from-[#1c1c24] dark:to-[#15151a] pointer-events-none -z-10" />
+                  
+                  <div className="absolute top-0 right-8 -translate-y-1/2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-20">
+                    Más Popular
+                  </div>
+                </>
               )}
 
-              <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">{plan.name}</h3>
-              <div className="mb-8 flex flex-col">
-                <div>
-                  <span className="text-5xl font-black text-slate-900 dark:text-white">{plan.price}</span>
-                  <span className="text-slate-500">{plan.period}</span>
+              {/* Contenedor de contenido z-10 */}
+              <div className="relative z-10 flex flex-col flex-1">
+                <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">{plan.name}</h3>
+                <div className="mb-8 flex flex-col">
+                  <div>
+                    <span className="text-5xl font-black text-slate-900 dark:text-white">{plan.price}</span>
+                    <span className="text-slate-500">{plan.period}</span>
+                  </div>
+                  <span className={`text-sm mt-1 ${plan.noteColor}`}>{plan.note}</span>
                 </div>
-                <span className={`text-sm mt-1 ${plan.noteColor}`}>{plan.note}</span>
-              </div>
 
-              <div className="mb-10 flex-1">
-                <FeatureList items={plan.features} color={plan.checkColor} />
-              </div>
+                <div className="mb-10 flex-1">
+                  <FeatureList items={plan.features} color={plan.checkColor} />
+                </div>
 
-              <Button variant={plan.ctaVariant} fullWidth size="lg">
-                {plan.cta}
-              </Button>
+                <Button variant={plan.ctaVariant} fullWidth size="lg">
+                  {plan.cta}
+                </Button>
+              </div>
             </motion.div>
           ))}
         </div>

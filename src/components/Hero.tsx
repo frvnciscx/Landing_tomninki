@@ -1,7 +1,30 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, ShieldCheck } from 'lucide-react';
+import { gsap } from 'gsap';
 
 export function Hero() {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (!headingRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.hero-letter',
+        { opacity: 0, y: 15 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.06,
+          duration: 0.8,
+          ease: 'power3.out',
+          delay: 0.3
+        }
+      );
+    }, headingRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden px-6 min-h-screen flex items-center">
       {/* Grid Background Effect */}
@@ -28,13 +51,27 @@ export function Hero() {
 
 
           <motion.h1 
+            ref={headingRef}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tight text-slate-900 dark:text-white mb-6 leading-[1.1]"
           >
             Gestiona tus <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">finanzas</span>
+            <span className="inline-block">
+              {"Finanzas".split("").map((char, index, arr) => (
+                <span
+                  key={index}
+                  className="hero-letter inline-block select-none text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent"
+                  style={{
+                    backgroundSize: `${arr.length * 100}% 100%`,
+                    backgroundPosition: `${(index / (arr.length - 1)) * 100}% 0%`,
+                  }}
+                >
+                  {char}
+                </span>
+              ))}
+            </span>
           </motion.h1>
 
           <motion.p 

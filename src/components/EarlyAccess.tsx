@@ -1,6 +1,10 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Star, Crown, Compass, MessageSquare, CheckCircle2, Loader2 } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // ─── Variants ─────────────────────────────────────────────────────────────────
 
@@ -65,6 +69,40 @@ export function EarlyAccess() {
   const [touched, setTouched] = useState({ name: false, email: false });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const emailRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const ctx = gsap.context(() => {
+      // Letters entrance animation on scroll
+      gsap.fromTo('.early-letter',
+        { opacity: 0, y: 15 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.05,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+
+      // Slow moving corporate gradient background animation
+      gsap.to('.early-gradient-bg', {
+        backgroundPosition: '100% 50%',
+        duration: 20,
+        ease: 'sine.inOut',
+        yoyo: true,
+        repeat: -1
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   // fb-form-validation: validate onBlur
   const handleNameBlur = () => {
@@ -120,9 +158,18 @@ export function EarlyAccess() {
     } text-slate-900 dark:text-white focus-visible:outline-none focus-visible:ring-2 transition-colors text-sm`;
 
   return (
-    <section id="early" className="py-24 px-6 bg-gradient-to-b from-slate-100 to-slate-50 dark:from-[#0c0c0f] dark:to-[#09090b] relative overflow-hidden">
+    <section 
+      ref={containerRef}
+      id="early" 
+      className="py-24 px-6 relative overflow-hidden"
+    >
+      {/* Fondo de gradiente corporativo dinámico y lento */}
+      <div 
+        className="early-gradient-bg absolute inset-0 -z-20 bg-gradient-to-tr from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20 pointer-events-none"
+        style={{ backgroundSize: '300% 300%' }}
+      />
       {/* Background glow */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-500/5 dark:bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-500/5 dark:bg-amber-500/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto relative z-10">
 
@@ -136,7 +183,22 @@ export function EarlyAccess() {
           >
             <Star className="w-12 h-12 text-amber-500 mb-4" aria-hidden="true" />
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-slate-900 dark:text-white">
-              Programa de <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-400">Acceso Anticipado</span> (PAA)
+              Programa de{' '}
+              <span className="inline-block">
+                {"Acceso Anticipado".split("").map((char, index, arr) => (
+                  <span
+                    key={index}
+                    className="early-letter inline-block select-none text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-400"
+                    style={{
+                      backgroundSize: `${arr.length * 100}% 100%`,
+                      backgroundPosition: `${(index / (arr.length - 1)) * 100}% 0%`,
+                    }}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                ))}
+              </span>{' '}
+              (PAA)
             </h2>
           </motion.div>
           <motion.p
