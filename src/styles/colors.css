@@ -1,0 +1,63 @@
+/**
+ * colors.css — Sistema de Variables de Color de Tomin-Ki
+ *
+ * Todas las primitivas de color se definen aquí como CSS custom properties.
+ * Tailwind las consume vía @theme en index.css.
+ * En JS/TS usa src/tokens/colors.ts con los mismos valores.
+ *
+ * Jerarquía:
+ *   Primitivas  →  tokens semánticos  →  componentes
+ */
+
+/* ─── Modo Claro (por defecto) ─────────────────────────────────────────────── */
+:root {
+  /* Marca */
+  --color-primary:          #432DD7;
+  --color-primary-hover:    #3826c0;
+  --color-primary-light:    #ede9ff;
+  --color-primary-glow:     rgba(67, 45, 215, 0.4);
+
+  --color-accent:           #00F2FE;
+  --color-accent-hover:     #00d4df;
+
+  /* Énfasis / VIP */
+  --color-vip:              #f59e0b;
+  --color-vip-hover:        #d97706;
+  --color-vip-subtle:       rgba(245, 158, 11, 0.15);
+
+  /* Semánticos: estado */
+  --color-success:          #10b981;
+  --color-success-subtle:   rgba(16, 185, 129, 0.15);
+  --color-warning:          #f59e0b;
+  --color-warning-subtle:   rgba(245, 158, 11, 0.1);
+  --color-danger:           #ef4444;
+  --color-danger-subtle:    rgba(239, 68, 68, 0.1);
+  --color-info:             #3b82f6;
+  --color-info-subtle:      rgba(59, 130, 246, 0.1);
+
+  /* Superficies — modo claro */
+  --color-surface-base:     #f8fafc;   /* bg principal */
+  --color-surface-card:     #ffffff;
+  --color-surface-muted:    #f1f5f9;
+  --color-surface-border:   #e2e8f0;
+
+  /* Texto — modo claro */
+  --color-text-primary:     #0f172a;
+  --color-text-secondary:   #475569;
+  --color-text-muted:       #94a3b8;
+  --color-text-on-primary:  #ffffff;
+}
+
+/* ─── Modo Oscuro ───────────────────────────────────────────────────────────── */
+.dark {
+  /* Superficies — modo oscuro */
+  --color-surface-base:     #09090b;
+  --color-surface-card:     #1E1E28;
+  --color-surface-muted:    #121217;
+  --color-surface-border:   rgba(255, 255, 255, 0.08);
+
+  /* Texto — modo oscuro */
+  --color-text-primary:     #f8fafc;
+  --color-text-secondary:   #cbd5e1;
+  --color-text-muted:       #64748b;
+}
