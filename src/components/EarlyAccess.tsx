@@ -90,15 +90,6 @@ export function EarlyAccess() {
           }
         }
       );
-
-      // Slow moving corporate gradient background animation
-      gsap.to('.early-gradient-bg', {
-        backgroundPosition: '100% 50%',
-        duration: 20,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1
-      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -158,18 +149,107 @@ export function EarlyAccess() {
     } text-slate-900 dark:text-white focus-visible:outline-none focus-visible:ring-2 transition-colors text-sm`;
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      id="early" 
-      className="py-24 px-6 relative overflow-hidden"
+      id="early"
+      className="py-24 px-6 relative overflow-hidden isolate"
     >
-      {/* Fondo de gradiente corporativo dinámico y lento */}
-      <div 
-        className="early-gradient-bg absolute inset-0 -z-20 bg-gradient-to-tr from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20 pointer-events-none"
-        style={{ backgroundSize: '300% 300%' }}
-      />
-      {/* Background glow */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-500/5 dark:bg-amber-500/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+      {/* ── CSS Morphing Gradients Animated Background ── */}
+      <style>{`
+        @keyframes earlyOrb1 {
+          0%   { transform: translate(0%, 0%)   scale(1);    opacity: 0.55; }
+          25%  { transform: translate(55%, 20%)  scale(1.25); opacity: 0.75; }
+          50%  { transform: translate(30%, 55%)  scale(0.9);  opacity: 0.6;  }
+          75%  { transform: translate(-20%, 35%) scale(1.15); opacity: 0.8;  }
+          100% { transform: translate(0%, 0%)   scale(1);    opacity: 0.55; }
+        }
+        @keyframes earlyOrb2 {
+          0%   { transform: translate(0%, 0%)   scale(1);    opacity: 0.5; }
+          20%  { transform: translate(-40%, 30%) scale(1.3);  opacity: 0.7; }
+          45%  { transform: translate(20%, -25%) scale(0.85); opacity: 0.55;}
+          70%  { transform: translate(50%, 40%)  scale(1.2);  opacity: 0.75;}
+          100% { transform: translate(0%, 0%)   scale(1);    opacity: 0.5; }
+        }
+        @keyframes earlyOrb3 {
+          0%   { transform: translate(0%, 0%)   scale(1);    opacity: 0.45;}
+          33%  { transform: translate(30%, -40%) scale(1.35); opacity: 0.65;}
+          66%  { transform: translate(-35%, 20%) scale(0.8);  opacity: 0.7; }
+          100% { transform: translate(0%, 0%)   scale(1);    opacity: 0.45;}
+        }
+        @keyframes earlyOrbSpin {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+        .early-orb-wrap {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          pointer-events: none;
+          overflow: hidden;
+        }
+        .early-orb {
+          position: absolute;
+          border-radius: 9999px;
+          filter: blur(80px);
+          will-change: transform, opacity;
+          mix-blend-mode: screen;
+        }
+        .early-orb-1 {
+          width: 35%;
+          padding-bottom: 65%;
+          top: -10%;
+          left: -5%;
+          background: radial-gradient(circle at 40% 40%,
+            rgba(251, 191, 36, 0.55),
+            rgba(245, 158, 11, 0.35) 40%,
+            transparent 72%);
+          animation: earlyOrb1 18s ease-in-out infinite;
+        }
+        .early-orb-2 {
+          width: 25%;
+          padding-bottom: 55%;
+          bottom: -15%;
+          right: -5%;
+          background: radial-gradient(circle at 60% 60%,
+            rgba(249, 115, 22, 0.5),
+            rgba(234, 88, 12, 0.3) 45%,
+            transparent 72%);
+          animation: earlyOrb2 22s ease-in-out infinite;
+        }
+        .early-orb-3 {
+          width: 25%;
+          padding-bottom: 45%;
+          top: 35%;
+          right: 25%;
+          background: radial-gradient(circle at 50% 50%,
+            rgba(251, 113, 133, 0.35),
+            rgba(244, 63, 94, 0.2) 45%,
+            transparent 72%);
+          animation: earlyOrb3 26s ease-in-out infinite;
+        }
+        .early-orb-noise {
+          position: absolute;
+          inset: 0;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+          opacity: 0.4;
+          z-index: 0;
+          pointer-events: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .early-orb-1,
+          .early-orb-2,
+          .early-orb-3 {
+            animation: none !important;
+          }
+        }
+      `}</style>
+
+      <div className="early-orb-wrap" aria-hidden="true">
+        <div className="early-orb early-orb-1" />
+        <div className="early-orb early-orb-2" />
+        <div className="early-orb early-orb-3" />
+        <div className="early-orb-noise" />
+      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
 
