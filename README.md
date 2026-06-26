@@ -75,6 +75,34 @@ El registro (modal) hoy **no envía** los datos a ningún servicio: valida y mue
 
 ---
 
+## Repositorio
+
+Repo del proyecto: **https://github.com/frvnciscx/Landing_tomninki**
+
+**Primera subida** (desde la raíz del proyecto):
+```bash
+git init
+git add .
+git commit -m "Landing PAA Tomin-ki: estructura inicial"
+git branch -M main
+git remote add origin https://github.com/frvnciscx/Landing_tomninki.git
+git push -u origin main
+```
+
+**Clonar** (otra computadora / equipo de desarrollo):
+```bash
+git clone https://github.com/frvnciscx/Landing_tomninki.git
+```
+
+**Flujo de cambios:**
+```bash
+git add .
+git commit -m "describe el cambio"
+git push
+```
+
+---
+
 ## Crédito
 
 Tomin-ki es un producto de **Tlahtocan Software**. Marca, paleta y tipografía según el *Manual de identidad Tomin-ki*.

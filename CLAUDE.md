@@ -75,8 +75,24 @@ python -m http.server 8080     # luego abrir http://localhost:8080
 Los scripts hacen `cd` a la raíz del proyecto (aunque vivan en `scripts/`). Requisitos del túnel: Python y `cloudflared` (el script ofrece instalarlo con winget).
 
 ## Git / repositorio
+- **Repo:** https://github.com/frvnciscx/Landing_tomninki
 - `Recuersos/` está en `.gitignore` (fuentes pesadas). Los assets finales sí se versionan (`assets/`).
 - Es un sitio estático: se puede desplegar tal cual en GitHub Pages, Netlify, Vercel o Cloudflare Pages (raíz = este folder, sin build).
+
+```bash
+# primera vez (desde la raíz del proyecto)
+git init
+git add .
+git commit -m "Landing PAA Tomin-ki: estructura inicial"
+git branch -M main
+git remote add origin https://github.com/frvnciscx/Landing_tomninki.git
+git push -u origin main
+
+# siguientes cambios
+git add .
+git commit -m "describe el cambio"
+git push
+```
 
 ## PENDIENTE (lo más importante)
 1. **Conectar el formulario/modal a un backend.** Hoy el modal (`#paaFormEl`) y NO guarda los correos: solo hace `console.log` y muestra éxito. Hay un `// TODO` en el JS. Conectar a Mailchimp / Formspree / API propia. Es el único punto: el modal centraliza toda la captura.
