@@ -40,10 +40,14 @@ Para compartir la página con un enlace público temporal, los scripts `serve-tu
 │   ├── img/          → logo, logo-pattern, mascotas (insignia/cuerpo/emocionado/triste), capturas de producto
 │   └── video/        → archivos del hero anterior (hoy sin uso; pueden borrarse)
 ├── scripts/          → serve-tunnel.bat / .ps1 / .sh
+├── robots.txt        → SEO (Allow all + sitemap)
+├── sitemap.xml       → SEO (home)
 ├── .gitignore        → ignora Recuersos/, .claude/, PDF del manual, OS files
 ├── CLAUDE.md         → guía técnica para continuar el desarrollo
 └── README.md         → este archivo
 ```
+
+> **Imágenes:** las fotos van como WebP con fallback PNG (`<picture>`), ~86% más ligeras. **SEO:** `index.html` trae canonical, Open Graph, Twitter Cards y JSON-LD; el dominio de producción es `https://tomin-ki.tlahtocan.software/`.
 
 No se versionan: `Recuersos/` (fuentes originales pesadas), `.claude/` (config del editor Claude Code) y el PDF del manual de marca.
 
@@ -56,8 +60,8 @@ No se versionan: `Recuersos/` (fuentes originales pesadas), `.claude/` (config d
 3. **El Problema** — tres dolores financieros + mascota triste.
 4. **Plataforma** — 6 funciones principales (degradado blanco → bg-soft).
 5. **Producto** (réplica del prototipo) — multiplataforma, Espacios, Metas con IA, Control de tarjetas, Gastos compartidos, Préstamos.
-6. **CTA final** — card morado con patrón del logo + mascota emocionado. Abre el modal de registro. **Posicionada antes del PAA** para cerrar la venta antes del detalle del programa.
-7. **Acceso Anticipado (PAA)** — 5 bloques:
+6. **CTA final** — card **amarillo** (`#ffd84d`) con patrón del logo en oscuro tenue + mascota emocionado y botón morado. Abre el modal de registro. **Posicionada antes del PAA** para cerrar la venta antes del detalle del programa.
+7. **Acceso Anticipado (PAA)** — arranca con un degradado amarillo lavado (`#FFF6D9`) que muere en blanco hacia las FAQs. 5 bloques:
    - 01 qué es el PAA (con mascota-insignia)
    - 02 beneficios (4x1, co-crea, insignia, soporte prioritario)
    - 03 duración (gratis durante beta, invitaciones por olas)
