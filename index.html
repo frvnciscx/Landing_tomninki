@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tomin-ki — Gestiona tus finanzas</title>
-<meta name="description" content="Controla tus gastos y obtén proyecciones futuras de manera intuitiva y eficiente para llevar tu economía al siguiente nivel. Únete al Programa de Acceso Anticipado de Tomin-ki.">
+<title>Tomin-ki — Tus finanzas, por fin claras</title>
+<meta name="description" content="Ve a dónde se te va el dinero, planea el siguiente mes y deja de adivinar. Únete al Programa de Acceso Anticipado de Tomin-ki y asegura 4 años al precio de 1.">
 
 <meta property="og:title" content="Tomin-ki · Acceso anticipado">
 <meta property="og:description" content="Por fin sabes a dónde se va tu dinero. Únete a los primeros en probar Tomin-ki.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/video/video-poster.jpg">
+<meta property="og:image" content="assets/img/prod-dashboard.png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:image:type" content="image/png">
 
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-tominki.svg">
 <meta name="theme-color" content="#432DD7">
@@ -42,7 +45,7 @@
 <!-- ===================== NAV ===================== -->
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a href="#" class="brand"><img src="assets/img/logo-tominki.svg" alt="Tomin-ki" width="40" height="40"><span translate="no">Tomin-ki</span></a>
+    <a href="#contenido" class="brand"><img src="assets/img/logo-tominki.svg" alt="" width="40" height="40" aria-hidden="true"><span translate="no">Tomin-ki</span></a>
     <nav class="nav-links" id="navLinks">
       <a href="#problema">El Problema</a>
       <a href="#beneficios">Plataforma</a>
@@ -52,25 +55,29 @@
       <a href="https://tomin-ki.beta.tlahtocan.software/login" class="nav-cta-mobile btn btn-primary">Iniciar Sesión</a>
     </nav>
     <a href="https://tomin-ki.beta.tlahtocan.software/login" class="btn btn-primary nav-cta">Iniciar Sesión</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="contenido" tabindex="-1">
-  <video class="hero-video" src="assets/video/video-principal.mp4" poster="assets/video/video-poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
-  <div class="hero-scrim"></div>
-  <svg class="hero-mandala" aria-hidden="true"><use href="#mandala"/></svg>
   <div class="hero-body">
-    <div class="wrap">
+    <div class="wrap hero-grid">
       <div class="hero-inner">
-        <span class="eyebrow light reveal in" style="margin-bottom:16px">Programa de Acceso Anticipado</span>
-        <h1 class="reveal in d1">Gestiona tus <span class="hl">Finanzas</span></h1>
-        <p class="lead reveal in d2">Controla tus gastos y obtén proyecciones futuras de manera intuitiva y eficiente para llevar tu economía al siguiente nivel.</p>
+        <span class="eyebrow reveal in" style="margin-bottom:16px">Programa de Acceso Anticipado</span>
+        <h1 class="reveal in d1">Tus <span class="hl">finanzas</span>, por fin <span class="hl">claras</span>.</h1>
+        <p class="lead reveal in d2">Ve a dónde se te va el dinero, planea el siguiente mes y deja de adivinar. Sin letras chiquitas.</p>
         <div class="hero-actions reveal in d3">
-          <button type="button" class="btn btn-sun" data-open-modal>Regístrate</button>
-          <p style="font-family:var(--mono);font-size:.78rem;color:var(--neon);margin-top:8px;width:100%">¡Obtén más de 4 años a precio de 1, regístrate hoy!</p>
+          <button type="button" class="btn btn-primary" data-open-modal>Apartar mi lugar</button>
+          <p class="hero-microcopy">4 años de Tomin-ki al precio de 1, solo para fundadores.</p>
         </div>
+      </div>
+      <div class="hero-mockup reveal in d2" aria-hidden="true">
+        <div class="window window-desktop">
+          <div class="window-bar"><div class="window-dots"><span></span><span></span><span></span></div><div class="window-url">app.tomin.ki/dashboard</div></div>
+          <img src="assets/img/prod-dashboard.png" alt="" class="mockup-img" loading="eager" fetchpriority="high" width="1920" height="1080">
+        </div>
+        <div class="phone-frame"><div class="phone-notch"></div><img src="assets/img/prod-mobile.png" alt="" class="phone-img" loading="eager" fetchpriority="high" width="412" height="917"></div>
       </div>
     </div>
   </div>
@@ -91,14 +98,14 @@
     <div class="section-head reveal" style="margin-bottom:0">
       <span class="eyebrow">El Problema</span>
       <h2>Una cuenta para todos tus gastos.</h2>
-      <p>La sociedad actual enfrenta serios desafíos en el manejo de sus finanzas personales y familiares. No dejes que la falta de herramientas evite tu crecimiento patrimonial.</p>
+      <p>Hablar de dinero da flojera. Por eso casi nadie sabe a dónde se le fue. Vamos a acomodarlo juntos.</p>
     </div>
     <img class="problem-mascot reveal d1" src="assets/img/mascota-triste.png" alt="La mascota de Tomin-ki, triste frente a sus finanzas desordenadas" width="240" height="245" loading="lazy">
     </div>
     <div class="pain-grid">
-      <div class="pain-card reveal"><span class="num">01</span><h3>Desconocimiento Mensual</h3><p>El 70% de las personas no logran saber con exactitud analítica en qué gastan su capital cada mes.</p></div>
-      <div class="pain-card reveal d1"><span class="num">02</span><h3>Desestabilización Familiar</h3><p>Los gastos eventuales o imprevistos terminan por quebrar o desestabilizar por completo los ahorros.</p></div>
-      <div class="pain-card reveal d2"><span class="num">03</span><h3>El Factor de la Deuda</h3><p>El mal manejo de tarjetas de crédito y préstamos empuja a las personas a ciclos continuos de endeudamiento.</p></div>
+      <div class="pain-card reveal"><span class="num">01</span><h3>No sabes a dónde se te va</h3><p>7 de cada 10 personas no saben en qué se les fue el dinero el mes pasado. Empezamos por ahí.</p></div>
+      <div class="pain-card reveal d1"><span class="num">02</span><h3>Un imprevisto y se cae todo</h3><p>Un gasto inesperado tumba meses de ahorro. Lo anticipamos antes de que pase.</p></div>
+      <div class="pain-card reveal d2"><span class="num">03</span><h3>Las tarjetas crecen solas</h3><p>Sin un mapa claro, las tarjetas y los préstamos te arrastran. Te ayudamos a salir del ciclo.</p></div>
     </div>
   </div>
 </section>
@@ -108,39 +115,39 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Plataforma</span>
-      <h2>Todo lo que necesitas para mejorar tus finanzas</h2>
-      <p>Las funciones más avanzadas y herramientas nativas disponibles en la plataforma para una administración perfecta.</p>
+      <h2>Todo lo que necesitas para mover mejor tu dinero</h2>
+      <p>Seis herramientas para entender, cuidar y planear, todos los días. Sin tecnicismos.</p>
     </div>
     <div class="feat-grid">
       <div class="feat-card dark reveal">
         <div class="feat-ico"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-4M12 16V9M16 16v-7"/></svg></div>
         <h3>Proyecciones de gastos y deudas</h3>
-        <p>Tu panorama financiero para fin de año no es una suposición, es un dato exacto. El sistema calcula con precisión tu nivel de endeudamiento futuro para que tomes el control hoy.</p>
+        <p>Mira cómo cerrarás el año antes de que llegue. Sin sorpresas, sin adivinar.</p>
       </div>
       <div class="feat-card reveal d1">
         <div class="feat-ico"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></div>
-        <h3>Control de Gastos</h3>
-        <p>Organiza y controla todos tus movimientos clasificándolos con nuestro sistema de múltiples categorías.</p>
+        <h3>Cada gasto en su lugar</h3>
+        <p>Categorías claras para ver, de un vistazo, en qué se te va el dinero.</p>
       </div>
       <div class="feat-card reveal d2">
         <div class="feat-ico"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
-        <h3>Gestión de Múltiples Tarjetas</h3>
-        <p>Controla y haz seguimiento del nivel de endeudamiento o pago en cada tarjeta o producto bancario independientemente.</p>
+        <h3>Todas tus tarjetas en un lugar</h3>
+        <p>Lleva al día cada tarjeta: lo que debes, lo que pagas y lo que viene.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-ico"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M18 16v-5a6 6 0 10-12 0v5l-2 2h16zM10 21h4"/></svg></div>
-        <h3>Gastos Eventuales</h3>
-        <p>Planifica la anticipación de tus gastos inesperados estableciendo potentes alertas predictivas.</p>
+        <h3>Adiós a los sustos</h3>
+        <p>Te avisamos antes de que un gasto inesperado te tome por sorpresa.</p>
       </div>
       <div class="feat-card reveal d1">
         <div class="feat-ico"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2l2.6 6.6L21 9.3l-5 4.4L17.5 21 12 17.4 6.5 21 8 13.7l-5-4.4 6.4-.7z"/></svg></div>
-        <h3>Planificación de Metas</h3>
-        <p>Define objetivos de ahorro claros para proyectos, vacaciones o fondos de emergencia, y monitorea tu progreso automáticamente.</p>
+        <h3>Metas que sí se cumplen</h3>
+        <p>Pon una meta y te trazamos el plan: cuánto guardar y cuándo llegas.</p>
       </div>
       <div class="feat-card reveal d2">
         <div class="feat-ico"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></div>
-        <h3>Control de Créditos</h3>
-        <p>Evita el agujero del endeudamiento revisando y saldando estratégicamente tus pasivos y cuentas fijas.</p>
+        <h3>Sal de deudas con cabeza</h3>
+        <p>Pon tus deudas en orden y sal de ellas sin asfixiarte cada quincena.</p>
       </div>
     </div>
   </div>
@@ -153,14 +160,14 @@
     <div class="wrap">
       <div class="mockup-header">
         <h2 class="display" style="font-size:clamp(2rem,4vw,3rem)">Tu dinero bajo control, est&eacute;s donde est&eacute;s.</h2>
-        <p class="lead">Gesti&oacute;n web y m&oacute;vil perfectamente integrada. Tus datos siempre est&aacute;n actualizados y disponibles en todos tus dispositivos, en tiempo real.</p>
+        <p class="lead">En la compu cuando analizas, en el celular cuando registras. Tus datos siempre en sinton&iacute;a, en tiempo real.</p>
       </div>
       <div class="mockup-stage">
         <div class="window window-desktop">
           <div class="window-bar"><div class="window-dots"><span></span><span></span><span></span></div><div class="window-url">app.tomin.ki/dashboard</div></div>
-          <img src="assets/img/prod-dashboard.png" alt="Dashboard de Tomin-ki" class="mockup-img" loading="lazy">
+          <img src="assets/img/prod-dashboard.png" alt="Dashboard de Tomin-ki" class="mockup-img" loading="lazy" width="1920" height="1080">
         </div>
-        <div class="phone-frame"><div class="phone-notch"></div><img src="assets/img/prod-mobile.png" alt="App m&oacute;vil de Tomin-ki" class="phone-img" loading="lazy"></div>
+        <div class="phone-frame"><div class="phone-notch"></div><img src="assets/img/prod-mobile.png" alt="App m&oacute;vil de Tomin-ki" class="phone-img" loading="lazy" width="412" height="917"></div>
       </div>
     </div>
   </section>
@@ -171,7 +178,7 @@
         <div class="split-content">
           <span class="eyebrow">Tu vida organizada</span>
           <h2 class="display split-title">Separa lo personal de lo profesional.</h2>
-          <p class="split-desc">Crea &ldquo;Espacios&rdquo; independientes para tu hogar, tu negocio o tus proyectos. Gestiona todo bajo una misma cuenta sin mezclar presupuestos.</p>
+          <p class="split-desc">Crea Espacios para tu hogar, tu negocio o tus proyectos. Cada uno con su presupuesto, sin mezclarse.</p>
         </div>
         <div class="split-visual">
           <div class="espacios-stack">
@@ -227,7 +234,7 @@
         <div class="split-content">
           <span class="eyebrow">El mapa para tus sue&ntilde;os</span>
           <h2 class="display split-title">De un deseo a un plan real.</h2>
-          <p class="split-desc">No guardamos tu dinero, trazamos la ruta para que lo logres. Nuestra IA analiza tus registros y crea planes din&aacute;micos para que el enganche de tu casa, auto o ese viaje dejen de ser una cifra y se vuelvan una realidad.</p>
+          <p class="split-desc">No guardamos tu dinero, trazamos la ruta para que llegues. Nuestra IA mira tus registros y arma el plan: cu&aacute;nto guardar y para cu&aacute;ndo lo logras.</p>
         </div>
       </div>
     </div>
@@ -246,7 +253,7 @@
         <div class="split-content">
           <span class="eyebrow">Adi&oacute;s a las sorpresas</span>
           <h2 class="display split-title">Control total de tus pl&aacute;sticos.</h2>
-          <p class="split-desc">Registra MSI, fechas de corte y pagos. Visualiza hoy c&oacute;mo tus compras actuales afectar&aacute;n tu saldo en los pr&oacute;ximos meses. Si el balance no cuadra, el sistema te avisa antes de que gastes.</p>
+          <p class="split-desc">Registra MSI, fechas de corte y pagos. Ve hoy c&oacute;mo lo que compras se ver&aacute; en tu saldo de los pr&oacute;ximos meses. Si algo no cuadra, te avisamos antes de gastar.</p>
         </div>
       </div>
     </div>
@@ -280,7 +287,7 @@
         <div class="split-content">
           <span class="eyebrow">Cuentas claras</span>
           <h2 class="display split-title">&iquest;Qui&eacute;n pag&oacute; qu&eacute;?</h2>
-          <p class="split-desc">Olvida las discusiones al dividir la cuenta del restaurante o los servicios del hogar. Registra el gasto grupal, asigna montos y mant&eacute;n el control de qui&eacute;n ya pag&oacute; y qui&eacute;n falta por abonar.</p>
+          <p class="split-desc">Divide la cuenta del restaurante o los servicios del hogar sin discutir. Registras el gasto, asignas montos y todos ven qui&eacute;n ya pag&oacute; y qui&eacute;n falta.</p>
         </div>
       </div>
     </div>
@@ -292,7 +299,7 @@
         <div class="split-content">
           <span class="eyebrow">El orden de tus deudas</span>
           <h2 class="display split-title">Control de deudas personales.</h2>
-          <p class="split-desc">Lleva un historial impecable del dinero que prestas o pides prestado a amigos y familiares. Registra abonos y mant&eacute;n la transparencia en tus relaciones.</p>
+          <p class="split-desc">Lleva al d&iacute;a el dinero que prestas o que te prestan. Registra abonos y mant&eacute;n las cuentas claras con tu familia y amigos.</p>
         </div>
         <div class="split-visual">
           <div class="prestamos-visual">
@@ -307,21 +314,37 @@
 
 </div>
 
+<!-- ===================== CTA FINAL ===================== -->
+<section class="block cta-final" id="unirme">
+  <div class="wrap">
+    <div class="inner reveal">
+      <img class="mascot-head" src="assets/img/mascota-emocionado.png" alt="Mascota de Tomin-ki" width="250" height="250" loading="lazy">
+      <span class="eyebrow light" style="display:inline-flex;color:var(--amarillo)">Cupos Abiertos</span>
+      <h2>Apártate como usuario fundador</h2>
+      <p>Invitamos por olas cada viernes, en orden de llegada. Tu lugar se queda fijo.</p>
+      <div style="display:flex;justify-content:center;margin-top:6px">
+        <button type="button" class="btn btn-sun" data-open-modal>Apartar mi lugar</button>
+      </div>
+      <p class="wl-note" style="text-align:center">Tu correo se queda con nosotros. Nada de terceros.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== ACCESO ANTICIPADO (PAA) ===================== -->
 <section class="block paa" id="acceso">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow" style="display:inline-flex">Programa de Acceso Anticipado</span>
       <h2>Todo sobre el PAA</h2>
-      <p>Lo que necesitas saber antes de apartar tu lugar como usuario fundador de Tomin-ki.</p>
+      <p>Lo que necesitas saber antes de apartar tu lugar como usuario fundador de <span translate="no">Tomin-ki</span>.</p>
     </div>
 
     <!-- 1 -->
     <div class="paa-block reveal">
       <div class="paa-bhead"><span class="num">01</span><h3>&iquest;Qu&eacute; es el PAA?</h3></div>
       <div class="paa-what">
-        <p>El <span class="hl">Programa de Acceso Anticipado</span> es una fase exclusiva de prelanzamiento para usuarios pioneros que quieren transformar sus finanzas antes que nadie. Estamos buscando a nuestros <span class="hl">usuarios fundadores</span>: ay&uacute;danos a probar y robustecer la plataforma en un ambiente colaborativo antes del lanzamiento oficial. A cambio, aseguras beneficios &uacute;nicos que jam&aacute;s se volver&aacute;n a repetir.</p>
-        <img src="assets/img/mascota-cuerpo.png" alt="Mascota de Tomin-ki" width="190" height="274" loading="lazy">
+        <p>El <span class="hl">Programa de Acceso Anticipado</span> es la fase previa al lanzamiento de <span translate="no">Tomin-ki</span>. Buscamos <span class="hl">usuarios fundadores</span> que prueben la plataforma con nosotros y nos ayuden a pulirla. A cambio, beneficios que no se vuelven a repetir.</p>
+        <img src="assets/img/mascota-insignia.png" alt="Mascota de Tomin-ki con su insignia de Fundador" width="240" height="240" loading="lazy">
       </div>
     </div>
 
@@ -329,10 +352,10 @@
     <div class="paa-block reveal">
       <div class="paa-bhead"><span class="num">02</span><h3>Beneficios del PAA</h3></div>
       <div class="paa-grid">
-        <div class="paa-card"><span class="pk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13M12 8S9.5 3.5 7.5 4.8 12 8 12 8zm0 0s2.5-4.5 4.5-3.2S12 8 12 8z"/></svg></span><div><b>4 a&ntilde;os a precio de 1</b><p>Acceso total al plan m&aacute;s robusto con un beneficio irrepetible de 4x1, m&aacute;s tarifas preferenciales en recargas de cr&eacute;ditos de IA.</p></div></div>
-        <div class="paa-card"><span class="pk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H8l-4 4V5a2 2 0 012-2h13a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg></span><div><b>Co-crea la plataforma</b><p>Vota qu&eacute; herramientas se liberan primero y comparte tu experiencia para que prioricemos lo que de verdad te genera valor.</p></div></div>
-        <div class="paa-card"><span class="pk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7.5 21 12 18l4.5 3L15 14.5"/></svg></span><div><b>Insignia de &ldquo;Fundador&rdquo; limitada</b><p>Un distintivo digital &uacute;nico y permanente en tu perfil que te acredita como pilar del proyecto. Cantidad estrictamente limitada.</p></div></div>
-        <div class="paa-card"><span class="pk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-1a8 8 0 0116 0v1"/><path d="M4 14a2 2 0 012-2h1v6H6a2 2 0 01-2-2zM20 14a2 2 0 00-2-2h-1v6h1a2 2 0 002-2z"/><path d="M18 18a4 4 0 01-4 3h-2"/></svg></span><div><b>Soporte prioritario y humano</b><p>Canal directo con atenci&oacute;n preferencial. Nada de bots ni largas esperas: una persona te atiende de inmediato.</p></div></div>
+        <div class="paa-card"><span class="pk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13M12 8S9.5 3.5 7.5 4.8 12 8 12 8zm0 0s2.5-4.5 4.5-3.2S12 8 12 8z"/></svg></span><div><b>4 a&ntilde;os a precio de 1</b><p>Acceso completo al plan m&aacute;s robusto: 4 a&ntilde;os pagando solo 1. M&aacute;s tarifa preferente en cr&eacute;ditos de IA.</p></div></div>
+        <div class="paa-card"><span class="pk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H8l-4 4V5a2 2 0 012-2h13a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg></span><div><b>Co-crea la plataforma</b><p>Vota qu&eacute; funciones salen primero y dinos qu&eacute; te sirve. Construimos lo que de verdad te ayuda.</p></div></div>
+        <div class="paa-card"><span class="pk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7.5 21 12 18l4.5 3L15 14.5"/></svg></span><div><b>Insignia de &ldquo;Fundador&rdquo; limitada</b><p>Un distintivo &uacute;nico y permanente en tu perfil. Cantidad limitada: cuando se acabe, se acab&oacute;.</p></div></div>
+        <div class="paa-card"><span class="pk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-1a8 8 0 0116 0v1"/><path d="M4 14a2 2 0 012-2h1v6H6a2 2 0 01-2-2zM20 14a2 2 0 00-2-2h-1v6h1a2 2 0 002-2z"/><path d="M18 18a4 4 0 01-4 3h-2"/></svg></span><div><b>Soporte prioritario y humano</b><p>Nada de bots ni esperas. Una persona te atiende, directo y r&aacute;pido.</p></div></div>
       </div>
     </div>
 
@@ -350,7 +373,7 @@
     <div class="paa-block reveal">
       <div class="paa-bhead"><span class="num">04</span><h3>Desarrollo de nuevas funciones</h3></div>
       <div class="paa-dev">
-        <p class="dev-lead">Tomin-ki evoluciona contigo. Durante el PAA tienes acceso a <b>votaciones exclusivas</b> para decidir qu&eacute; herramientas de nuestro roadmap se liberan primero, y un canal para sugerir mejoras sobre las funciones actuales. Priorizamos el esfuerzo en lo que realmente te genera valor.</p>
+        <p class="dev-lead"><span translate="no">Tomin-ki</span> crece contigo. Como fundador, tienes <b>votaciones exclusivas</b> para decidir qu&eacute; funciones del roadmap salen primero, y un canal directo para sugerir mejoras. Construimos lo que de verdad te sirve.</p>
         <ul class="paa-roadmap">
           <li>Reportes a tu medida <span class="vote">&#9650; en votaci&oacute;n</span></li>
           <li>M&aacute;s herramientas de IA <span class="vote">&#9650; en votaci&oacute;n</span></li>
@@ -364,15 +387,26 @@
     <div class="paa-block reveal">
       <div class="paa-bhead"><span class="num">05</span><h3>&iquest;Qu&eacute; sigue?</h3></div>
       <div class="paa-steps">
-        <div class="paa-step"><div class="sn">1</div><h4>Reg&iacute;strate</h4><p>Deja tu correo y solicita tu acceso al PAA.</p></div>
-        <div class="paa-step"><div class="sn">2</div><h4>Recibe tu invitaci&oacute;n</h4><p>Te invitamos por olas, cada viernes, en orden de suscripci&oacute;n.</p></div>
-        <div class="paa-step"><div class="sn">3</div><h4>Empieza a usar</h4><p>Accede desde la web o la app m&oacute;vil y ordena tu dinero.</p></div>
-        <div class="paa-step"><div class="sn">4</div><h4>Lanzamiento oficial</h4><p>Tu precio de fundador 4x1 y tu insignia quedan fijos de por vida.</p></div>
+        <div class="paa-step">
+          <div class="sn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2v20l3-2 3 2 3-2 3 2 3-2V2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+          <h4>Lee tus tickets por ti</h4>
+          <p>Sube la foto y la IA registra qu&eacute; compraste, d&oacute;nde y en qu&eacute; categor&iacute;a. T&uacute; solo apruebas.</p>
+        </div>
+        <div class="paa-step">
+          <div class="sn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div>
+          <h4>Arma tus metas a tu ritmo</h4>
+          <p>Le dices a qu&eacute; quieres llegar. La IA traza el plan: cu&aacute;nto guardar y para cu&aacute;ndo lo logras.</p>
+        </div>
+        <div class="paa-step">
+          <div class="sn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7c1 1 1.5 2.3 1.5 3.3h5c0-1 .5-2.3 1.5-3.3A7 7 0 0012 2z"/></svg></div>
+          <h4>Aprende de ti y te sugiere</h4>
+          <p>Conforme te conoce, ve por d&oacute;nde se te escapa el dinero y te dice d&oacute;nde apretar sin sufrir.</p>
+        </div>
       </div>
     </div>
 
     <div class="paa-cta reveal">
-      <button type="button" class="btn btn-primary" data-open-modal>Solicitar Acceso al PAA</button>
+      <button type="button" class="btn btn-primary" data-open-modal>Apartar mi lugar</button>
     </div>
   </div>
 </section>
@@ -385,30 +419,13 @@
       <h2>Lo que seguro te estás preguntando</h2>
     </div>
     <div class="faq-list reveal d1">
-      <div class="faq-item"><button class="faq-q">¿Qué es el Programa de Acceso Anticipado (PAA) y por qué debería unirme?</button><div class="faq-a"><p>Es una fase exclusiva de prelanzamiento para usuarios pioneros que quieren transformar sus finanzas antes que nadie. Al unirte, no solo aseguras beneficios comerciales únicos que jamás se volverán a repetir (como el plan 4x1), sino que obtienes el privilegio de votar por la prioridad de desarrollo de las funciones por venir.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Si adquiero la promoción de 4 años por el precio de 1, ¿el tiempo empieza a contar ya?</button><div class="faq-a"><p>No. Tu membresía de 4 años comenzará a contar formalmente a partir del lanzamiento oficial de la plataforma al público. Todo el tiempo que utilices Tomin-ki durante la fase del PAA corre por nuestra cuenta; es nuestro agradecimiento por ayudarnos a robustecer la aplicación.</p></div></div>
-      <div class="faq-item"><button class="faq-q">¿Qué diferencia a Tomin-ki de una aplicación de gastos tradicional?</button><div class="faq-a"><p>La mayoría de las apps solo te dicen en qué gastaste ayer. Tomin-ki mira hacia el futuro. Nuestro punto más fuerte es el sistema de proyecciones de gastos y deudas: al registrar tus créditos activos, compras a MSI y servicios fijos, la plataforma calcula con precisión cómo cerrará tu salud financiera a fin de año.</p></div></div>
-      <div class="faq-item"><button class="faq-q">¿Puedo usar Tomin-ki tanto en mi celular como en la computadora?</button><div class="faq-a"><p>¡Sí! Contamos con sincronización total bidireccional. Usa la app móvil para registrar tus gastos al instante estés donde estés, y accede al portal web cuando quieras analizar tus datos, balances y reportes con más detalle.</p></div></div>
-      <div class="faq-item"><button class="faq-q">¿Mis datos financieros están seguros con ustedes?</button><div class="faq-a"><p>Tu seguridad es nuestra prioridad. Utilizamos la infraestructura de las mejores compañías del sector y aplicamos las mejores prácticas de la industria, incluyendo protocolos de comunicación segura (SSL/TLS) y una arquitectura en la nube diseñada para mantener tu información privada y blindada en todo momento.</p></div></div>
-      <div class="faq-item"><button class="faq-q">¿Cómo funciona el soporte prioritario para los miembros del PAA?</button><div class="faq-a"><p>Olvídate de los bots y las respuestas automatizadas. Durante el PAA y posterior al mismo tendrás acceso exclusivo a un canal de comunicación directo y personalizado, donde un miembro de nuestro equipo te atenderá de forma humana y prioritaria.</p></div></div>
-      <div class="faq-item"><button class="faq-q">¿Necesito instalar algo para empezar?</button><div class="faq-a"><p>Para el portal web, accedes de forma inmediata desde cualquier navegador sin instalar nada. Para la versión móvil, una vez que recibas tu invitación secuencial de la Lista VIP, te daremos las instrucciones de acceso para tu dispositivo.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CTA FINAL ===================== -->
-<section class="block cta-final" id="unirme">
-  <svg class="watermark" aria-hidden="true"><use href="#mandala"/></svg>
-  <div class="wrap">
-    <div class="inner reveal">
-      <img class="mascot-head" src="assets/img/mascota-emocionado.png" alt="Mascota de Tomin-ki" width="250" height="250" loading="lazy">
-      <span class="eyebrow light" style="display:inline-flex;color:var(--amarillo)">Cupos Abiertos</span>
-      <h2>Únete a la Lista VIP</h2>
-      <p>Las invitaciones son enviadas de forma secuencial cada viernes según el orden de suscripción.</p>
-      <div style="display:flex;justify-content:center;margin-top:6px">
-        <button type="button" class="btn btn-sun" data-open-modal>Solicitar Acceso al PAA</button>
-      </div>
-      <p class="wl-note" style="text-align:center">Nunca compartiremos tu correo con terceros.</p>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a-1">¿Qué es el Programa de Acceso Anticipado (PAA) y por qué debería unirme?</button><div class="faq-a" id="faq-a-1"><p>Es la fase previa al lanzamiento de Tomin-ki. Al entrar como usuario fundador aseguras el plan 4x1 (4 años al precio de 1) y tu insignia permanente. Además, votas qué funciones del roadmap salen primero.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a-2">Si adquiero la promoción de 4 años por el precio de 1, ¿el tiempo empieza a contar ya?</button><div class="faq-a" id="faq-a-2"><p>No. Tu membresía de 4 años comenzará a contar formalmente a partir del lanzamiento oficial de la plataforma al público. Todo el tiempo que utilices Tomin-ki durante la fase del PAA corre por nuestra cuenta; es nuestro agradecimiento por ayudarnos a robustecer la aplicación.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a-3">¿Qué diferencia a <span translate="no">Tomin-ki</span> de una aplicación de gastos tradicional?</button><div class="faq-a" id="faq-a-3"><p>La mayoría de las apps te dicen en qué gastaste ayer. <span translate="no">Tomin-ki</span> mira hacia adelante. Al registrar tus créditos, compras a MSI y servicios fijos, calculamos cómo cerrará tu año. Lo ves antes de que llegue.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a-4">¿Puedo usar <span translate="no">Tomin-ki</span> tanto en mi celular como en la computadora?</button><div class="faq-a" id="faq-a-4"><p>¡Sí! Todo se sincroniza en tiempo real. Usa el celular para registrar al vuelo y la compu para analizar con calma. Tus datos siempre coinciden.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a-5">¿Mis datos financieros están seguros con ustedes?</button><div class="faq-a" id="faq-a-5"><p>Tus datos son tuyos y los cuidamos como si fueran nuestros. Usamos cifrado en tránsito (SSL/TLS) e infraestructura en la nube con las mejores prácticas de la industria. Sin letras chiquitas.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a-6">¿Cómo funciona el soporte prioritario para los miembros del PAA?</button><div class="faq-a" id="faq-a-6"><p>Nada de bots ni respuestas automatizadas. Durante el PAA (y después) tienes un canal directo donde te atiende una persona del equipo, rápido y de tú.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-a-7">¿Necesito instalar algo para empezar?</button><div class="faq-a" id="faq-a-7"><p>Para la web, entras desde cualquier navegador sin instalar nada. Para la app móvil, cuando llegue tu invitación te mandamos las instrucciones de acceso para tu dispositivo.</p></div></div>
     </div>
   </div>
 </section>
@@ -418,8 +435,8 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand"><img src="assets/img/logo-tominki.svg" alt="Tomin-ki" width="40" height="40"><span translate="no">Tomin-ki</span></div>
-        <p>La solución completa para gestionar tus finanzas personales, familiares y de pequeños negocios, respaldada por Tlahtocan Software.</p>
+        <div class="foot-brand"><img src="assets/img/logo-tominki.svg" alt="" width="40" height="40" aria-hidden="true"><span translate="no">Tomin-ki</span></div>
+        <p>El compañero financiero de cabecera para México. Hecho por <span translate="no">Tlahtocan Software</span> para que hablar de dinero deje de dar miedo.</p>
       </div>
       <div class="foot-links">
         <div class="foot-col"><h4>Producto</h4><a href="#problema">El Problema</a><a href="#beneficios">Plataforma</a><a href="#acceso">Acceso anticipado</a><a href="#faq">FAQs</a></div>
@@ -428,8 +445,8 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Powered by Tlahtocan Software. Todos los derechos reservados.</span>
-      <span>tomin-ki.mx · Ciudad de México</span>
+      <span>© 2026 Powered by <span translate="no">Tlahtocan Software</span>. Todos los derechos reservados.</span>
+      <span><span translate="no">tomin-ki.mx</span> · Ciudad de México</span>
     </div>
   </div>
 </footer>
@@ -440,12 +457,12 @@
     <button class="modal-close" id="paaClose" type="button" aria-label="Cerrar">✕</button>
     <div id="paaForm">
       <span class="modal-badge">◆ Acceso anticipado</span>
-      <h2 id="paaTitle">Únete a la Lista VIP</h2>
-      <p class="sub">Las invitaciones se envían de forma secuencial cada viernes según el orden de suscripción.</p>
+      <h2 id="paaTitle">Apártate como usuario fundador</h2>
+      <p class="sub">Invitamos por olas cada viernes, en orden de llegada. Déjanos tu correo y te avisamos.</p>
       <form id="paaFormEl" novalidate>
         <div class="field">
           <label for="paaEmail">Correo electrónico</label>
-          <input type="email" id="paaEmail" name="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="tu@correo.com" required>
+          <input type="email" id="paaEmail" name="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="tu@correo.com&hellip;" required>
           <p class="modal-err" id="paaEmailErr" role="alert">Escribe un correo válido.</p>
         </div>
         <label class="check" for="paaTerms">
@@ -453,13 +470,13 @@
           <span>Acepto los <a href="https://tomin-ki.beta.tlahtocan.software/terminos-y-condiciones" target="_blank" rel="noopener">términos y condiciones</a> y el <a href="https://tomin-ki.beta.tlahtocan.software/aviso-de-privacidad" target="_blank" rel="noopener">aviso de privacidad</a>.</span>
         </label>
         <p class="modal-err" id="paaTermsErr" role="alert">Debes aceptar los términos para continuar.</p>
-        <button type="submit" class="btn btn-primary">Solicitar Acceso al PAA</button>
+        <button type="submit" class="btn btn-primary">Apartar mi lugar</button>
       </form>
     </div>
-    <div class="modal-success" id="paaSuccess">
+    <div class="modal-success" id="paaSuccess" aria-live="polite">
       <img src="assets/img/mascota-emocionado.png" alt="" width="96" height="96">
-      <h2>¡Listo! Ya estás en la lista 🎉</h2>
-      <p class="sub">Te escribimos pronto para darte acceso.</p>
+      <h2>¡Listo! Ya apartaste tu lugar 🎉</h2>
+      <p class="sub">Te escribimos pronto. Bienvenido a <span translate="no">Tomin-ki</span>.</p>
       <button type="button" class="btn btn-primary" id="paaDone">Cerrar</button>
     </div>
   </div>

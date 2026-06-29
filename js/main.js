@@ -6,8 +6,9 @@ onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 // Menú móvil
 const navToggle=document.getElementById('navToggle');
 const navLinks=document.getElementById('navLinks');
-navToggle.addEventListener('click',()=>navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+function setNavOpen(open){navLinks.classList.toggle('open',open);navToggle.setAttribute('aria-expanded',String(open));}
+navToggle.addEventListener('click',()=>setNavOpen(!navLinks.classList.contains('open')));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setNavOpen(false)));
 
 // Reveal on scroll
 const io=new IntersectionObserver((entries)=>{
@@ -15,36 +16,22 @@ const io=new IntersectionObserver((entries)=>{
 },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
 
-// Respeta prefers-reduced-motion: pausa el video de fondo
-if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const hv=document.querySelector('.hero-video'); if(hv){hv.removeAttribute('autoplay'); if(hv.pause)hv.pause();}
-}
-
 // FAQ acordeón
 document.querySelectorAll('.faq-q').forEach(q=>{
   q.addEventListener('click',()=>{
     const item=q.parentElement, ans=item.querySelector('.faq-a'), open=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});
-    if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+    document.querySelectorAll('.faq-item').forEach(i=>{
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight=null;
+      i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+    });
+    if(!open){
+      item.classList.add('open');
+      ans.style.maxHeight=ans.scrollHeight+'px';
+      q.setAttribute('aria-expanded','true');
+    }
   });
 });
-
-// Formularios waitlist (placeholder — conectar backend después)
-function handleWaitlist(formId,successId){
-  const form=document.getElementById(formId), success=document.getElementById(successId);
-  if(!form)return;
-  form.querySelector('input[name=email]').addEventListener('input',function(){this.removeAttribute('aria-invalid');var e2=form.querySelector('.wl-error');if(e2)e2.classList.remove('show');});
-  form.addEventListener('submit',e=>{
-    e.preventDefault();
-    const input=form.querySelector('input[name=email]'), email=input.value.trim();
-    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){input.setAttribute('aria-invalid','true');var er=form.querySelector('.wl-error');if(er){er.textContent='Escribe un correo válido para apartar tu lugar.';er.classList.add('show');}input.focus();return;}
-    // TODO: enviar 'email' a tu servicio (Mailchimp / API / Google Form).
-    console.log('Waitlist signup:',email);
-    form.style.display='none';
-    success.classList.add('show');
-    success.setAttribute('tabindex','-1');success.focus();
-  });
-}
 
 // Modal PAA
 (function(){
@@ -58,11 +45,15 @@ function handleWaitlist(formId,successId){
   const termsErr=document.getElementById('paaTermsErr');
   const done=document.getElementById('paaDone');
   let lastFocus=null;
+  const isDesktop=()=>matchMedia('(hover:hover) and (pointer:fine)').matches;
+  function focusables(){
+    return modal.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),[tabindex]:not([tabindex="-1"])');
+  }
   function openModal(){
     lastFocus=document.activeElement;
     modal.hidden=false; modal.classList.add('open');
     document.body.style.overflow='hidden';
-    setTimeout(()=>email&&email.focus(),60);
+    if(isDesktop()&&email){requestAnimationFrame(()=>email.focus());}
     document.addEventListener('keydown',onKey);
   }
   function closeModal(){
@@ -71,7 +62,15 @@ function handleWaitlist(formId,successId){
     document.removeEventListener('keydown',onKey);
     if(lastFocus&&lastFocus.focus)lastFocus.focus();
   }
-  function onKey(e){if(e.key==='Escape')closeModal();}
+  function onKey(e){
+    if(e.key==='Escape'){closeModal();return;}
+    if(e.key==='Tab'){
+      const f=focusables(); if(!f.length)return;
+      const first=f[0], last=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}
+      else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}
+    }
+  }
   document.querySelectorAll('[data-open-modal]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openModal();}));
   document.getElementById('paaClose').addEventListener('click',closeModal);
   done.addEventListener('click',closeModal);
@@ -80,12 +79,11 @@ function handleWaitlist(formId,successId){
   terms.addEventListener('change',()=>{if(terms.checked)termsErr.classList.remove('show');});
   formEl.addEventListener('submit',e=>{
     e.preventDefault();
-    let ok=true; const val=email.value.trim();
-    if(!val||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){email.setAttribute('aria-invalid','true');emailErr.classList.add('show');ok=false;}
-    if(!terms.checked){termsErr.classList.add('show');ok=false;}
-    if(!ok)return;
+    let ok=true, firstInvalid=null; const val=email.value.trim();
+    if(!val||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){email.setAttribute('aria-invalid','true');emailErr.classList.add('show');ok=false;firstInvalid=firstInvalid||email;}
+    if(!terms.checked){termsErr.classList.add('show');ok=false;firstInvalid=firstInvalid||terms;}
+    if(!ok){firstInvalid&&firstInvalid.focus();return;}
     // TODO: enviar 'val' a tu servicio (Mailchimp / API / Google Form).
-    console.log('PAA signup:',val);
     formWrap.style.display='none';
     success.classList.add('show');
     done.focus();

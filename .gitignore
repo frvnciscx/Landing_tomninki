@@ -5,6 +5,10 @@ desktop.ini
 
 # Fuentes originales pesadas (no se publican; los assets finales están en assets/)
 Recuersos/
+Manual de identidad Tomin-ki.pdf
+
+# Tooling local del editor (Claude Code)
+.claude/
 
 # Logs y temporales
 *.log

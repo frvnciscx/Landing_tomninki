@@ -2,7 +2,7 @@
 
 Landing page de una sola página para captar usuarios fundadores del **Programa de Acceso Anticipado (PAA)** de **Tomin-ki**, app de finanzas personales para México.
 
-![Tomin-ki](assets/logo-tominki.svg)
+![Tomin-ki](assets/img/logo-tominki.svg)
 
 ---
 
@@ -34,13 +34,14 @@ Para compartir la página con un enlace público temporal, los scripts `serve-tu
 
 ```
 ├── index.html        → marcado HTML
-├── css/styles.css    → estilos
-├── js/main.js        → lógica (nav, animaciones, FAQ, modal)
+├── css/styles.css    → estilos (tokens, secciones, responsive)
+├── js/main.js        → lógica (nav scroll+aria, reveal, FAQ accesible, modal)
 ├── assets/
-│   ├── img/          → logo, mascotas, capturas de producto
-│   └── video/        → video del hero + poster
+│   ├── img/          → logo, logo-pattern, mascotas (insignia/cuerpo/emocionado/triste), capturas de producto
+│   └── video/        → archivos del hero anterior (hoy sin uso; pueden borrarse)
 ├── scripts/          → serve-tunnel.bat / .ps1 / .sh
 ├── Recuersos/        → fuentes originales (en .gitignore)
+├── Manual de identidad Tomin-ki.pdf
 ├── .gitignore
 ├── CLAUDE.md         → guía técnica para continuar el desarrollo
 └── README.md         → este archivo
@@ -50,24 +51,24 @@ Para compartir la página con un enlace público temporal, los scripts `serve-tu
 
 ## Secciones de la página
 
-1. **Hero** — video de fondo + propuesta de valor + botón "Regístrate".
-2. **Cintillo de confianza** — beneficios clave en una línea.
-3. **El Problema** — tres dolores financieros + mascota.
-4. **Plataforma** — 6 funciones principales.
+1. **Hero** — fondo blanco con degradado crema, mensaje a la izquierda con H1 *"Tus finanzas, por fin claras."* (con palabras resaltadas en italic morado) + mockup de dashboard y app móvil a la derecha.
+2. **Cintillo de confianza** — 4 beneficios clave en una línea (crema).
+3. **El Problema** — tres dolores financieros + mascota triste.
+4. **Plataforma** — 6 funciones principales (degradado blanco → bg-soft).
 5. **Producto** (réplica del prototipo) — multiplataforma, Espacios, Metas con IA, Control de tarjetas, Gastos compartidos, Préstamos.
-6. **Acceso Anticipado (PAA)** — 5 bloques: qué es, beneficios, duración, desarrollo de nuevas funciones y qué sigue.
-7. **Preguntas frecuentes (FAQ).**
-8. **CTA final** + **modal de registro** (correo + términos + enviar).
-9. **Footer** — contacto, legales, redes.
+6. **Acceso Anticipado (PAA)** — 5 bloques: qué es (con mascota-insignia), beneficios, duración, desarrollo y qué sigue.
+7. **CTA final** — card morado con patrón del logo y modal de registro (correo + términos + enviar).
+8. **Preguntas frecuentes (FAQ)** — acordeón accesible (`aria-expanded` + `aria-controls`).
+9. **Footer** — contacto, legales, redes (fondo crema, texto oscuro).
 
 ---
 
 ## Personalización rápida
 
-- **Colores y fuentes:** variables CSS en el bloque `:root` de `index.html`.
-- **Textos:** directamente en el HTML de `index.html`.
-- **Imágenes/video:** reemplazar archivos dentro de `assets/` conservando el nombre.
-- **Mascota:** `mascota-cuerpo.png`, `mascota-emocionado.png`, `mascota-triste.png`.
+- **Colores y fuentes:** variables CSS en el bloque `:root` de `css/styles.css`.
+- **Textos:** directamente en el HTML de `index.html` (alineados a la voz del manual de marca).
+- **Imágenes:** reemplazar archivos dentro de `assets/img/` conservando el nombre.
+- **Mascota:** `mascota-insignia.png`, `mascota-cuerpo.png`, `mascota-emocionado.png`, `mascota-triste.png`.
 
 ## Conectar el formulario (pendiente)
 
