@@ -7,7 +7,7 @@ Landing page de una sola página (`index.html`) para el **Programa de Acceso Ant
 
 - **Producto real / referencia de copy:** https://tomin-ki.beta.tlahtocan.software/
 - **Proyecto fuente del que se tomaron secciones/mockups:** `..\lannding\Tomin ki - paa` (React vía CDN; de ahí salieron Espacios, Metas IA, Tarjetas, Gastos compartidos, Préstamos y las imágenes `prod-dashboard.png` / `prod-mobile.png`).
-- **Manual de marca:** `Manual de identidad Tomin-ki.pdf` (raíz). Voz, valores, paleta y reglas tipográficas.
+- **Manual de marca:** El PDF original (`Manual de identidad Tomin-ki.pdf`) no se versiona (está en `.gitignore`). La voz, paleta y reglas tipográficas relevantes están reflejadas en este documento y en `:root` de `css/styles.css`.
 
 ## Stack
 - **HTML + CSS + JS puro.** Sin build, sin frameworks, sin dependencias.
@@ -40,8 +40,7 @@ Landing_tomninki/
 │   ├── serve-tunnel.ps1     ← Windows PowerShell
 │   └── serve-tunnel.sh      ← macOS/Linux
 ├── Recuersos/               ← fuentes originales (en .gitignore, NO se publican)
-├── Manual de identidad Tomin-ki.pdf
-├── .gitignore
+├── .gitignore               ← ignora Recuersos/, .claude/, PDF del manual, *.log, OS files
 ├── CLAUDE.md                ← este archivo
 └── README.md                ← documentación
 ```
@@ -97,9 +96,19 @@ Landing_tomninki/
 - Fondo con degradado `linear-gradient(180deg, #fff 0%, var(--bg) 100%)` — termina en `--bg` para encadenar visualmente con el `.psec-wrap` siguiente.
 
 ### PAA bloque 01 (`.paa-what`)
-- Grid `1fr 1.1fr`. **Mascota insignia a la izquierda** (`grid-column:1`, `justify-self:start`, `width:320px`), texto a la derecha (`grid-column:2`).
+- Grid `1fr 1.1fr` con `align-items:center`. **Mascota insignia a la izquierda** (`grid-column:1`, **`grid-row:1`**, `justify-self:start`, `width:320px`), texto a la derecha (`grid-column:2`, **`grid-row:1`**).
+- El `grid-row:1` explícito en ambos es **obligatorio**: como el `<p>` viene primero en HTML, sin él el auto-placement pone el texto en fila 1 y la mascota se va a fila 2 (quedan en diagonal).
+
+### PAA bloque 05 (`.paa-step` × 3)
+- "¿Qué sigue?" ya **no** es onboarding del usuario. Describe 3 features de IA que vienen para la app:
+  1. **Lee tus tickets por ti** (OCR)
+  2. **Arma tus metas a tu ritmo** (planificador IA)
+  3. **Aprende de ti y te sugiere** (recomendaciones personalizadas)
+- Grid `repeat(3,1fr)` en desktop, 1 col en mobile.
+- `.sn` ahora es **icon container** (46×46, crema/accent) con SVG inline — ya no es texto numérico.
 
 ### CTA final (`.cta-final`)
+- **Posición:** entre `.psec-wrap` y `#acceso` (antes del PAA, no después). Cierra la venta antes de entrar al detalle del programa.
 - Ya **no es banda full-bleed**. Es un **card** dentro del `.wrap`: `padding:40px 0` en el `<section>`, el fondo morado + esquinas redondeadas + padding `56px 40px` se aplican al `> .wrap` interno.
 - **Patrón del logo** como background del card: `.cta-final > .wrap::before` con `url(../assets/img/logo-pattern.svg)`, `background-size:110px 110px`, `opacity:.1`.
 - Mascota emocionado 170×170 (era 250×250).
@@ -112,7 +121,11 @@ Landing_tomninki/
 - **Sin `box-shadow`** ni en reposo ni en hover (eliminado por decisión de diseño). Hover en `btn-primary` oscurece el morado (`#3320a0`).
 
 ### Modal PAA (`#paaModal`)
-- Correo + checkbox de términos + enviar. Abre con cualquier elemento con atributo `data-open-modal`. Accesible: `role=dialog`, Esc, click fuera, foco gestionado, sincronización `aria-invalid`.
+- Correo + checkbox de términos + enviar. Abre con cualquier elemento con atributo `data-open-modal`.
+- A11y: `role=dialog`, `aria-modal=true`, `aria-live=polite` en `.modal-success`, Esc, click fuera, restauración de foco al cerrar, sincronización `aria-invalid`, focus al **primer campo inválido** en submit.
+- **Focus trap:** Tab/Shift+Tab ciclan dentro del modal (no escapan al fondo).
+- **Autofocus solo en desktop:** se enfoca el email vía `requestAnimationFrame` cuando `matchMedia('(hover:hover) and (pointer:fine)')` matchea. En móvil no se enfoca para no abrir el teclado virtual de golpe.
+- `overscroll-behavior:contain` evita scroll-chaining al fondo.
 
 ### Animaciones
 - `.reveal` + `IntersectionObserver` (respeta `prefers-reduced-motion`).
@@ -121,7 +134,9 @@ Landing_tomninki/
 ### Reglas generales
 - Iconos: SVG inline. Caracteres especiales en HTML como entidades (`&oacute;`, `&ntilde;`).
 - Editar con reemplazos exactos; tras editar, validar balance de `<div>` y `node --check js/main.js`.
-- A11y: skip link, `:focus-visible` global con outline `--neon2`, `text-wrap:balance` en headings, `color-scheme:light`, `touch-action:manipulation` en botones, `[id]{scroll-margin-top:92px}`.
+- **Imágenes con atributos `width`/`height`:** SIEMPRE acompañar con `height:auto` en CSS si se aplica `width:100%`, o el atributo HTML gana sobre el aspect-ratio implícito y la imagen se renderiza estirada (caso histórico: el dashboard de `#features` salía 970×1080 en vez de 970×546). Patrón seguro: `width:100%;height:auto;aspect-ratio:N/M`.
+- A11y: skip link (con `transform`, no `top`), `:focus-visible` global con outline `--neon2`, `text-wrap:balance` en headings, `color-scheme:light`, `touch-action:manipulation` en botones, `[id]{scroll-margin-top:92px}`, `translate="no"` en menciones de marca ("Tomin-ki", "Tlahtocan Software") en body copy.
+- **`prefers-reduced-motion`** cubre `.reveal`, animaciones del prototipo (`.bar`, `.hero-float`), accordion `.faq-a`, modal pop/fade, skip-link.
 
 ## Cómo correr
 ```bash
@@ -151,11 +166,11 @@ git push
 - **vercel-optimize** — optimizar costos/performance de proyectos en Vercel
 
 ## PENDIENTE
-1. **Conectar el formulario/modal a un backend.** El modal (`#paaFormEl`) NO guarda los correos hoy: solo hace `console.log` y muestra éxito. Hay un `// TODO` en el JS. Conectar a Mailchimp / Formspree / API propia.
+1. **Conectar el formulario/modal a un backend.** El modal (`#paaFormEl`) NO guarda los correos hoy: solo valida y muestra éxito. Hay un `// TODO` en el JS. Conectar a Mailchimp / Formspree / API propia, idealmente con spinner real durante el request (rule de forms).
 2. **Términos y Aviso de Privacidad:** el modal y el footer enlazan a las URLs del beta. Verificar que sean las definitivas.
 3. **Posible redundancia:** la sección "Plataforma" (6 tarjetas) se solapa temáticamente con las secciones de producto del prototipo. Evaluar si se simplifica.
 4. **Limpiar `assets/video/`:** el `video-principal.mp4` y `video-poster.jpg` quedaron huérfanos (el hero ya no usa video). Borrar si no se reutilizan.
-5. **Revisión visual real:** abrir en navegador y revisar en desktop/móvil. Hubo un problema reportado con el dashboard del hero renderizándose grande; se aplicó `max-width:560px` + `aspect-ratio:16/9` + `height:auto` — confirmar que quedó bien.
+5. **Sugerencias del audit Vercel pendientes de aplicar** (esperan validación): `type="button"` en `.faq-q`; `og:image:width/height/type` ya agregados ✓; regex de email más estricto; `env(safe-area-inset-bottom)` en footer para iOS landscape.
 
 ## Nota
 El correo de contacto del sitio beta es `contacto@tlatocan.software` (sin "h"); se respetó tal cual. Confirmar si es typo.

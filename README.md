@@ -40,12 +40,12 @@ Para compartir la página con un enlace público temporal, los scripts `serve-tu
 │   ├── img/          → logo, logo-pattern, mascotas (insignia/cuerpo/emocionado/triste), capturas de producto
 │   └── video/        → archivos del hero anterior (hoy sin uso; pueden borrarse)
 ├── scripts/          → serve-tunnel.bat / .ps1 / .sh
-├── Recuersos/        → fuentes originales (en .gitignore)
-├── Manual de identidad Tomin-ki.pdf
-├── .gitignore
+├── .gitignore        → ignora Recuersos/, .claude/, PDF del manual, OS files
 ├── CLAUDE.md         → guía técnica para continuar el desarrollo
 └── README.md         → este archivo
 ```
+
+No se versionan: `Recuersos/` (fuentes originales pesadas), `.claude/` (config del editor Claude Code) y el PDF del manual de marca.
 
 > Sitio 100% estático: desplegable tal cual en GitHub Pages, Netlify, Vercel o Cloudflare Pages (sin build).
 
@@ -56,10 +56,16 @@ Para compartir la página con un enlace público temporal, los scripts `serve-tu
 3. **El Problema** — tres dolores financieros + mascota triste.
 4. **Plataforma** — 6 funciones principales (degradado blanco → bg-soft).
 5. **Producto** (réplica del prototipo) — multiplataforma, Espacios, Metas con IA, Control de tarjetas, Gastos compartidos, Préstamos.
-6. **Acceso Anticipado (PAA)** — 5 bloques: qué es (con mascota-insignia), beneficios, duración, desarrollo y qué sigue.
-7. **CTA final** — card morado con patrón del logo y modal de registro (correo + términos + enviar).
+6. **CTA final** — card morado con patrón del logo + mascota emocionado. Abre el modal de registro. **Posicionada antes del PAA** para cerrar la venta antes del detalle del programa.
+7. **Acceso Anticipado (PAA)** — 5 bloques:
+   - 01 qué es el PAA (con mascota-insignia)
+   - 02 beneficios (4x1, co-crea, insignia, soporte prioritario)
+   - 03 duración (gratis durante beta, invitaciones por olas)
+   - 04 desarrollo de funciones (roadmap + votaciones)
+   - 05 **lo que viene en IA** (lee tickets, arma metas, sugiere ahorros)
 8. **Preguntas frecuentes (FAQ)** — acordeón accesible (`aria-expanded` + `aria-controls`).
 9. **Footer** — contacto, legales, redes (fondo crema, texto oscuro).
+10. **Modal de registro** — correo + checkbox de términos. Accesible: focus trap, Esc, click fuera, autofocus solo en desktop, anuncio del éxito vía `aria-live`.
 
 ---
 
@@ -76,31 +82,96 @@ El registro (modal) hoy **no envía** los datos a ningún servicio: valida y mue
 
 ---
 
-## Repositorio
+## Trabajar con el repositorio
 
-Repo del proyecto: **https://github.com/frvnciscx/Landing_tomninki**
+El sitio vive en GitHub: **https://github.com/frvnciscx/Landing_tomninki**
 
-**Primera subida** (desde la raíz del proyecto):
-```bash
-git init
-git add .
-git commit -m "Landing PAA Tomin-ki: estructura inicial"
-git branch -M main
-git remote add origin https://github.com/frvnciscx/Landing_tomninki.git
-git push -u origin main
-```
+> Requisito único: tener `git` instalado. En Windows usa Git Bash o PowerShell; en macOS/Linux la terminal del sistema.
 
-**Clonar** (otra computadora / equipo de desarrollo):
+### 1. Bajar el proyecto a tu computadora
+
+Solo la primera vez:
+
 ```bash
 git clone https://github.com/frvnciscx/Landing_tomninki.git
+cd Landing_tomninki
 ```
 
-**Flujo de cambios:**
+Eso descarga todos los archivos en una carpeta nueva llamada `Landing_tomninki` y entra en ella.
+
+### 2. Antes de editar, traer lo más reciente
+
+Cada vez que vayas a trabajar, sincroniza tu copia local con lo que esté en GitHub:
+
 ```bash
-git add .
-git commit -m "describe el cambio"
-git push
+git pull
 ```
+
+Esto trae los cambios que cualquier otra persona (o tú desde otra máquina) haya subido. Te evita conflictos.
+
+### 3. Editar el contenido
+
+| Quieres cambiar… | Abre… |
+|---|---|
+| Textos, copy, secciones | `index.html` |
+| Colores, tipografía, espaciados | `css/styles.css` (los colores están al inicio, en `:root`) |
+| Imágenes (mascota, mockups) | Reemplaza el archivo dentro de `assets/img/` conservando el mismo nombre |
+| Comportamiento (modal, FAQ, scroll) | `js/main.js` |
+| Doc del proyecto | `README.md` (este archivo) o `CLAUDE.md` (guía técnica) |
+
+Para verlo en tu navegador antes de subir, levanta el servidor local:
+
+```bash
+python -m http.server 8080
+# abre http://localhost:8080
+```
+
+O usa los scripts `scripts/serve-tunnel.*` (incluyen túnel público con Cloudflare).
+
+### 4. Subir tus cambios a GitHub
+
+Cuando estés conforme:
+
+```bash
+git status                             # ver qué archivos cambiaron
+git add .                              # marcar todos los cambios para subir
+git commit -m "describe tu cambio"     # guardar un punto de cambio con descripción
+git push                               # subir a GitHub
+```
+
+El mensaje del `commit` debe describir **qué cambió**, en una frase corta. Ejemplos buenos:
+
+- `Actualiza copy del hero`
+- `Cambia color del CTA a morado más oscuro`
+- `Reemplaza foto de mascota en sección PAA`
+- `Fix tipografía móvil del footer`
+
+Después del `push`, los cambios ya están en GitHub. Si el sitio está desplegado en GitHub Pages / Netlify / Vercel / Cloudflare Pages, se publica en producción automáticamente en unos segundos.
+
+### 5. Comandos útiles si algo sale mal
+
+```bash
+# Ver qué archivos tienes modificados sin haber subido aún
+git status
+
+# Descartar los cambios de un archivo (vuelve a la última versión guardada)
+git restore <ruta/del/archivo>
+
+# Descartar TODOS los cambios locales (¡cuidado, pierdes lo no commiteado!)
+git restore .
+
+# Ver el historial de cambios subidos
+git log --oneline -10
+```
+
+### Qué NO se sube a GitHub
+
+El archivo `.gitignore` define qué se ignora. Hoy:
+
+- `Recuersos/` — fuentes originales pesadas del diseñador (los assets finales en `assets/img/` sí se publican).
+- `Manual de identidad Tomin-ki.pdf` — referencia local del diseñador; no es asset del sitio.
+- `.claude/` — config local del editor Claude Code (no afecta el sitio).
+- `.DS_Store`, `Thumbs.db`, `desktop.ini`, `*.log` — basura del sistema operativo.
 
 ---
 
