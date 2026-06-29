@@ -1,0 +1,13 @@
+# Normaliza fin de línea: LF en el repositorio (evita ruido CRLF/LF al clonar en Windows)
+* text=auto eol=lf
+
+# Archivos binarios (git no los toca)
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.gif  binary
+*.ico  binary
+*.mp4  binary
+*.woff binary
+*.woff2 binary
